@@ -1,0 +1,49 @@
+{
+  "id": "zrozumoki",
+  "name": "Zrozum OKI",
+  "logo": "zrozum",
+  "domain": "zrozumoki.pl",
+  "headline": "Zrozum reguły. Porównaj warianty.",
+  "intro": "Sprawdź, przy jakich założeniach zmienia się wynik OKI. Zestaw podatki, koszty i moment sprzedaży na wspólnych danych.",
+  "kicker": "Porównuję i analizuję",
+  "featured": "oki-czy-zwykly-rachunek",
+  "cta": "Porównaj rachunki",
+  "asideLabel": "Wynik ma warunki",
+  "asideTitle": "Założenia → wynik",
+  "asideText": "Ten sam horyzont i przepływy. Jawny moment realizacji. Wersja reguł i zakres modelu dostępne przy każdym wyniku.",
+  "toolsHeading": "Wybierz model porównania",
+  "knowledgeHeading": "Reguły i warunki brzegowe",
+  "sideHeading": "Sprawdź porównywalność",
+  "sideSteps": [
+    "Ustal wspólne przepływy i horyzont.",
+    "Odróżnij znane reguły od przyszłych założeń.",
+    "Przeczytaj ślad obliczeń i ograniczenia modelu."
+  ],
+  "order": [
+    "oki-czy-zwykly-rachunek",
+    "obecny-portfel",
+    "koszty-oki",
+    "podatek-oki",
+    "regularne-wplaty"
+  ],
+  "articleTitles": {
+    "co-to-jest-oki": "Mechanizm OKI: konto, aktywa i podatek",
+    "limity-i-srednie": "Zwolnienia i agregacja średnich",
+    "jak-wybrac-operatora": "Operator OKI: kryteria i kompromisy",
+    "pierwszy-plan": "Scenariusz bazowy i zmiana założeń"
+  },
+  "articleNotes": {
+    "co-to-jest-oki": "Wyłączenie dochodów z PIT i podatek od aktywów to odrębne mechanizmy. Porównanie wymaga obu, a nie samego hasła o uldze.",
+    "limity-i-srednie": "Kilka kont nie mnoży zwolnienia. Nadwyżka S nie przechodzi automatycznie do niewykorzystanej puli I.",
+    "jak-wybrac-operatora": "Najpierw warunki konieczne, następnie koszt identycznego planu. Arbitralna suma punktów może ukryć istotne różnice.",
+    "pierwszy-plan": "Zapisz bazę. Zmieniaj po jednym parametrze, aby ustalić źródło różnicy; dopiero potem zestawiaj pełne warianty."
+  },
+  "articleBodies": {
+    "co-to-jest-oki": "<p>Porównanie OKI wymaga rozdzielenia dwóch mechanizmów: wyłączenia określonych dochodów z PIT i podatku od wartości aktywów. Korzyść zależy od grup aktywów, średnich, kosztów i sposobu realizacji zysku w alternatywnym wariancie.</p><h2>Nie porównuj samych stawek</h2><p>Stawka od dochodu i stawka od wartości aktywów mają różne podstawy. Podatek od aktywów może wystąpić mimo straty inwestycyjnej. Dlatego model powinien pokazywać przebieg portfela oraz podatki oddzielnie.</p><h2>Zakres porównania</h2><p>Pierwsza wersja używa jednej grupy i jednego konta, stałych założonych zwrotów oraz końcowej sprzedaży zwykłego portfela. Nie opisuje wszystkich strategii realizacji, podatków zagranicznych ani instrumentów. Przepisy przewidują wejście w życie od 1 stycznia 2027 r.; dostępność operatora wymaga osobnej weryfikacji.</p>",
+    "limity-i-srednie": "<p>Podstawą rachunku są sumy prawidłowo ustalonych średnich grup ze wszystkich OKI podatnika. Zwolnienie nie przysługuje osobno dla każdej umowy.</p><h2>Algebra zwolnień</h2><p>E_S = min(S, 25 000). E_I = min(I, 100 000 − E_S). Podstawa = S + I + N − E_S − E_I. To wzór na gotowych średnich, bez rozstrzygania kwalifikacji instrumentu.</p><h2>Przypadek, który ujawnia ograniczenie</h2><p>Hipotetyczne S = 50 000 zł i I = 50 000 zł daje podstawę 25 000 zł, choć suma wynosi 100 000 zł. Nadwyżka S nie wykorzystuje automatycznie wolnej puli I. Kwota arytmetyczna 2027 r. to 212,50 zł przed końcowym zaokrągleniem.</p><h2>Średnia a dane dzienne</h2><p>Rachunek ustawowy uwzględnia wyceny, korekty przepływów i dni posiadania konta. Model przyszłego kapitału jest inną operacją niż odtworzenie rzeczywistych średnich. Nie zastępuj jednego drugim przy rozliczeniu.</p>",
+    "jak-wybrac-operatora": "<p>Porównanie operatorów zacznij od warunków koniecznych, a dopiero potem od kosztu tego samego planu. Sumaryczny wynik punktowy z arbitralnymi wagami mógłby zamaskować brak potrzebnej funkcji lub nieznany warunek.</p><h2>Macierz porównania</h2><p>Kolumny: oferta A, oferta B, źródło, data i brakujące informacje. Wiersze: forma konta, zakres produktów, potwierdzona klasyfikacja, taryfa, przewalutowania, wypłaty, zmiana lub zakończenie umowy, informacje roczne i obsługa.</p><h2>Koszt na wspólnych przepływach</h2><p>Użyj identycznego kapitału, wpłat, horyzontu i aktywności. Oddziel opłaty operatora od kosztów instrumentów; sprawdź ryzyko podwójnego naliczenia. Obecny model rocznej opłaty nie jest pełną wyceną każdej taryfy.</p><h2>Wynik z zakresem</h2><p>Nieznany warunek pozostaje niewiadomą. Potwierdzenie podmiotu, formy ochrony i dostępności wymaga aktualnych dokumentów. Nie wykonano tu przeglądu konkretnych ofert ani testów aplikacji.</p>",
+    "pierwszy-plan": "<p>Wariant bazowy powinien definiować przepływy, horyzont, sposób wyceny, opłaty i moment realizacji zysku. Bez zgodności tych parametrów różnica wyników nie wyjaśnia wpływu samego rodzaju konta.</p><h2>Najpierw jedna zmienna</h2><ol><li>Zapisz pełny zestaw założeń bazowych.</li><li>Zmień zwrot, koszt lub horyzont — pojedynczo.</li><li>Sprawdź wrażliwość wartości końcowej, a nie wyłącznie kwoty podatku.</li><li>Dopiero potem zestaw pełne alternatywne scenariusze.</li></ol><h2>Granice obecnego modelu</h2><p>Symulacja przyjmuje wpłaty na początku miesiąca i opłaty oraz modelowy podatek OKI na koniec roku. Zwykły portfel realizuje zysk na końcu horyzontu. Stawka OKI od 2028 r. i zmiany progów od 2030 r. są jawnymi stałymi założeniami użytkownika, nie prognozą parametrów prawa.</p>"
+  },
+  "releaseVersion": "1.0.0",
+  "publisher": "slss"
+}

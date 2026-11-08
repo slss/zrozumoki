@@ -1,0 +1,106 @@
+{
+  "checked_at": "2026-11-08",
+  "scope": "Algebra zwolnień na gotowych średnich rocznych; nie pełna implementacja art. 23–24; wartości przed końcowym zaokrągleniem kwoty podatku.",
+  "cases": [
+    {
+      "title": "Tylko I poniżej progu",
+      "S": "0",
+      "I": "80000",
+      "N": "0",
+      "exemption_S": "0",
+      "exemption_I": "80000",
+      "tax_base": "0",
+      "tax_before_rounding": "0.0000"
+    },
+    {
+      "title": "I ponad próg",
+      "S": "0",
+      "I": "150000",
+      "N": "0",
+      "exemption_S": "0",
+      "exemption_I": "100000",
+      "tax_base": "50000",
+      "tax_before_rounding": "425.0000"
+    },
+    {
+      "title": "Tylko S ponad próg",
+      "S": "50000",
+      "I": "0",
+      "N": "0",
+      "exemption_S": "25000",
+      "exemption_I": "0",
+      "tax_base": "25000",
+      "tax_before_rounding": "212.5000"
+    },
+    {
+      "title": "S i I równe 100 tys.",
+      "S": "25000",
+      "I": "75000",
+      "N": "0",
+      "exemption_S": "25000",
+      "exemption_I": "75000",
+      "tax_base": "0",
+      "tax_before_rounding": "0.0000"
+    },
+    {
+      "title": "50 tys. S i 50 tys. I",
+      "S": "50000",
+      "I": "50000",
+      "N": "0",
+      "exemption_S": "25000",
+      "exemption_I": "50000",
+      "tax_base": "25000",
+      "tax_before_rounding": "212.5000"
+    },
+    {
+      "title": "S i I, wykorzystane łączne zwolnienie",
+      "S": "50000",
+      "I": "100000",
+      "N": "0",
+      "exemption_S": "25000",
+      "exemption_I": "75000",
+      "tax_base": "50000",
+      "tax_before_rounding": "425.0000"
+    },
+    {
+      "title": "80 tys. I i 10 tys. N",
+      "S": "0",
+      "I": "80000",
+      "N": "10000",
+      "exemption_S": "0",
+      "exemption_I": "80000",
+      "tax_base": "10000",
+      "tax_before_rounding": "85.0000"
+    },
+    {
+      "title": "Dwa konta po 80 tys. I",
+      "S": "0",
+      "I": "160000",
+      "N": "0",
+      "exemption_S": "0",
+      "exemption_I": "100000",
+      "tax_base": "60000",
+      "tax_before_rounding": "510.0000"
+    },
+    {
+      "title": "Dokładnie 100 tys. I",
+      "S": "0",
+      "I": "100000",
+      "N": "0",
+      "exemption_S": "0",
+      "exemption_I": "100000",
+      "tax_base": "0",
+      "tax_before_rounding": "0.0000"
+    },
+    {
+      "title": "Brak aktywów",
+      "S": "0",
+      "I": "0",
+      "N": "0",
+      "exemption_S": "0",
+      "exemption_I": "0",
+      "tax_base": "0",
+      "tax_before_rounding": "0.0000"
+    }
+  ]
+}

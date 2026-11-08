@@ -1,0 +1,3 @@
+# Zasady serwisu
+
+Obowiązują ../../AGENTS.md i wspólne zasady katalogu zbiorczego. To niezależne repozytorium strony. Uruchamiaj tutaj Git, test, build i check. Własne treści w content.json i konfiguracja w site.json. Przypięte vendor aktualizuj przez wspólne źródło i sync, z nową wersją przy zmianie reguł. Produkcyjny adres wynika z configure-pages; lokalny podgląd jest noindex. Nie kopiuj tokenów i danych innych witryn. Zmienne CF_WEB_ANALYTICS_TOKEN i GOOGLE_SITE_VERIFICATION są własne dla repozytorium. Publikację sprawdzaj po workflow i publicznych odpowiedziach, a DNS, certyfikat i Search Console traktuj jako osobne etapy.

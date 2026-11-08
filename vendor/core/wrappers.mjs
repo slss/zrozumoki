@@ -1,0 +1,18 @@
+import {execute as base,parseMoney,VERSION,RULES,SOURCE} from './engine.mjs';
+export function wrappers(input){
+ const meta={calculationVersion:VERSION,rulesVersion:RULES,checkedAt:'2026-11-08',currency:'PLN',sources:[SOURCE,'https://eli.gov.pl/api/acts/DU/2024/707/text.html','https://www.gov.pl/web/rodzina/roczny-limit-wplat-na-ikze']};
+ try{
+ const allowed=['initialPln','monthlyPln','years','annualReturnPercent','annualFixedFeePln','annualFeePercent','group','futureTaxPercent','thresholdIndexationPercent','currentAge','deductionRatePercent','assumedIkeAnnualLimitPln','assumedIkzeAnnualLimitPln'];
+ if(!input||typeof input!=='object'||Array.isArray(input))throw Error('Podaj obiekt danych.');for(const k of Object.keys(input))if(!allowed.includes(k))throw Error('Nieobsługiwane pole: '+k);
+ const raw=Object.fromEntries(allowed.slice(0,9).map(k=>[k,input[k]])),r=base('compare_oki_scenarios',raw);if(r.status!=='ok')return r;
+ if(!Number.isInteger(input.currentAge)||input.currentAge<18||input.currentAge>100)throw Error('Podaj obecny wiek od 18 do 100 lat.');
+ const init=Number(parseMoney(input.initialPln))/100,monthly=Number(parseMoney(input.monthlyPln))/100;
+ const contributionYears=monthly>0?input.years:init>0?1:0;
+ if(input.currentAge+input.years<65||contributionYears<5)return {...meta,status:'unsupported_case',message:'Ten model obejmuje wyłącznie nowe plany z wpłatami w co najmniej 5 latach i wypłatą po ukończeniu 65 lat, spełniającą przyjęte warunki IKE i IKZE. Nie modeluje wcześniejszych zwrotów ani szczególnych przypadków.'};
+ const firstYear=init+12*monthly,ikeLimit=Number(parseMoney(input.assumedIkeAnnualLimitPln))/100,ikzeLimit=Number(parseMoney(input.assumedIkzeAnnualLimitPln))/100;
+ if(firstYear>ikeLimit||firstYear>ikzeLimit)return {...meta,status:'unsupported_case',message:'Wpłaty przekraczają co najmniej jeden przyjęty limit roczny. Model nie rozdziela nadwyżek na inne konta.'};
+ const rate=input.deductionRatePercent;if(typeof rate!=='number'||!Number.isFinite(rate)||rate<0||rate>32)throw Error('Założona efektywna korzyść odliczenia: 0–32%.');
+ const refund=(init+12*monthly*input.years)*rate/100,ike=Number(r.ordinary.balancePln),ikze=ike*.9;
+ return {...meta,status:'ok',input,calculationMode:'qualified_retirement_withdrawal_only',metrics:[{label:'OKI po modelowych podatkach',value:r.oki.balancePln,unit:'PLN'},{label:'IKE przy przyjętej kwalifikowanej wypłacie',value:ike.toFixed(2),unit:'PLN'},{label:'IKZE po 10% od całej wypłaty',value:ikze.toFixed(2),unit:'PLN'},{label:'Modelowa suma korzyści odliczeń — osobna gotówka',value:refund.toFixed(2),unit:'PLN'},{label:'IKZE + zachowana osobno gotówka z odliczeń',value:(ikze+refund).toFixed(2),unit:'PLN'}],rows:[],limitations:[...r.limitations,'Nowe plany od 2027 r., bez wcześniejszych kont, transferów, wcześniejszego zwrotu i zagranicznych podatków. Stałe jednakowe wpłaty brutto i koszty w trzech formach.','Model wymaga wieku co najmniej 65 lat na końcu i wpłat w co najmniej 5 latach; nie obsługuje wszystkich alternatywnych warunków IKE. Przyjęta kwalifikowana wypłata: IKE bez podatku od zysku, IKZE 10% od całej wypłaty.','Przyszłe roczne limity wpłat są jawnymi stałymi założeniami użytkownika, nie oficjalnymi wartościami. Trzeba zweryfikować każdy rzeczywisty rok osobno.','Efektywna korzyść odliczenia wymaga wystarczającej podstawy i prawa do odliczenia. Zakładamy pełne wykorzystanie podanej stawki co roku.','Korzyści odliczeń zachowane osobno bez odsetek, bez reinwestowania i bez dyskontowania; nie zwiększają salda IKZE. Pokazano osobno, aby nie ukrywać różnicy przepływów.']};
+ }catch(e){return {...meta,status:e.status??'invalid_input',field:e.field??'input',message:e.message};}
+}

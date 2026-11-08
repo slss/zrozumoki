@@ -1,0 +1,11 @@
+{
+  "name": "zrozumoki",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node vendor/site/build.mjs",
+    "check": "node vendor/site/check.mjs",
+    "dev": "node vendor/site/server.mjs 8782",
+    "test": "node --test vendor/test/*.test.mjs"
+  }
+}
