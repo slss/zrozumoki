@@ -31,7 +31,11 @@ jobs:
           INDEXABLE: 'true'
           CF_WEB_ANALYTICS_TOKEN: ${{ vars.CF_WEB_ANALYTICS_TOKEN }}
           GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
-        run: npm run build
+        run: |
+          # Pages może zgłaszać HTTP podczas wystawiania certyfikatu domeny.
+          # Publikujemy wyłącznie kanoniczne adresy HTTPS.
+          export SITE_URL="${SITE_URL/http:/https:}"
+          npm run build
       - name: Sprawdź HTML, metadane i odnośniki
         run: npm run check
       - uses: actions/upload-pages-artifact@v5
